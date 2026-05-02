@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 try:
     from models.encoder import PatchEncoder
     from models.mil import ASTRA
+    from models.astra_combined import ASTRACombined
     from pipeline.wsi import WSIReader
     from pipeline.maps import compute_tissue_mask, compute_complexity_map
     from pipeline.graph import TissueGraph
@@ -72,7 +73,8 @@ class MinimalTrainer:
         self.load_slide_list()
         
         # Initialize model
-        self.model = ASTRA(
+        self.model = ASTRACombined(
+            backbone='resnet18',
             feature_dim=256,  # Smaller for faster testing
             num_classes=2
         ).to(self.device)
@@ -110,14 +112,21 @@ class MinimalTrainer:
             (patches, valid_count): numpy array of patches and count
         """
         try:
-            # Read slide
-            reader = WSIReader(slide_path)
-            slide_image = reader.get_thumbnail(level=2)
+            import cv2
+            
+            # Read slide - use cv2 for PNG/JPG, fallback to WSIReader for SVS
+            if isinstance(slide_path, str) and (slide_path.endswith('.png') or slide_path.endswith('.jpg') or slide_path.endswith('.jpeg')):
+                slide_image = cv2.imread(slide_path)
+                if slide_image is not None:
+                    slide_image = cv2.cvtColor(slide_image, cv2.COLOR_BGR2RGB)
+            else:
+                reader = WSIReader(slide_path)
+                slide_image = reader.get_thumbnail(level=2)
             
             if slide_image is None or slide_image.size == 0:
                 print(f"    ⚠️  Could not read slide, returning dummy patches")
                 # Return dummy patches for testing
-                return np.random.rand(5, 256, 256, 3).astype(np.uint8), 5
+                return np.random.rand(5, 224, 224, 3).astype(np.uint8), 5
             
             # Compute maps
             tissue_mask = compute_tissue_mask(slide_image)
@@ -145,9 +154,9 @@ class MinimalTrainer:
                                    max(0, x):min(slide_image.shape[1], x+w)]
                 
                 if patch.size > 0:
-                    # Resize to 256x256
+                    # Resize to 224x224 for ResNet
                     import cv2
-                    patch = cv2.resize(patch, (256, 256))
+                    patch = cv2.resize(patch, (224, 224))
                     patches.append(patch)
             
             return np.array(patches), len(patches)
@@ -182,7 +191,8 @@ class MinimalTrainer:
             
             # Forward pass
             self.optimizer.zero_grad()
-            logits = self.model(patches_tensor.unsqueeze(0))  # Add batch dim
+            output = self.model(patches_tensor)  # Returns dict
+            logits = output['logits']  # (1, 2)
             loss = self.criterion(logits, label_tensor)
             
             # Backward pass
@@ -221,7 +231,8 @@ class MinimalTrainer:
                 patches_tensor = patches_tensor.permute(0, 3, 1, 2)
                 label_tensor = torch.LongTensor([label]).to(self.device)
                 
-                logits = self.model(patches_tensor.unsqueeze(0))
+                output = self.model(patches_tensor)
+                logits = output['logits']
                 pred = logits.argmax(dim=1)
                 correct += (pred == label_tensor).sum().item()
                 total += 1
