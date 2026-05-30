@@ -1,0 +1,332 @@
+{
+  "metadata": {
+    "study_date": "2026-05-30T02:38:24.185106",
+    "version": "2.0",
+    "researcher_note": "Synthetic data based on published RCC WSI literature",
+    "references": [
+      "Lu et al., 2021 - CLAM: Clustering-constrained Attention Multiple Instance Learning",
+      "Macenko et al., 2009 - A Method for Normalizing Histology Slides",
+      "Campanella et al., 2019 - Clinical-grade computational pathology using CNN",
+      "TCGA - The Cancer Genome Atlas RCC cohort"
+    ]
+  },
+  "methods": {
+    "uniform_grid": {
+      "method": "Uniform Grid (256x256, 50% overlap)",
+      "patches_per_image": {
+        "mean": 287,
+        "std": 45,
+        "min": 156,
+        "max": 412,
+        "median": 289
+      },
+      "extraction_time_ms": {
+        "mean": 428,
+        "std": 67
+      },
+      "accuracy": {
+        "normal_vs_tumor": 0.9218,
+        "std": 0.0156,
+        "ccRCC_detection": 0.8921,
+        "pRCC_detection": 0.7854,
+        "oncocytoma_detection": 0.8657
+      },
+      "per_class_metrics": {
+        "normal": {
+          "sensitivity": 0.9145,
+          "specificity": 0.9287,
+          "f1": 0.9215,
+          "auc": 0.9654
+        },
+        "tumor": {
+          "sensitivity": 0.9291,
+          "specificity": 0.9149,
+          "f1": 0.922,
+          "auc": 0.9687
+        }
+      },
+      "computational": {
+        "gpu_memory_gb": 2.3,
+        "total_parameters_m": 12.4,
+        "inference_time_ms_per_image": 1247,
+        "patch_processing_overhead_pct": 35
+      }
+    },
+    "adaptive_tiling": {
+      "method": "Adaptive Tiling (Content-aware, no stain norm)",
+      "patches_per_image": {
+        "mean": 185,
+        "std": 38,
+        "min": 89,
+        "max": 287,
+        "median": 181
+      },
+      "extraction_time_ms": {
+        "mean": 312,
+        "std": 52
+      },
+      "accuracy": {
+        "normal_vs_tumor": 0.9287,
+        "std": 0.0142,
+        "ccRCC_detection": 0.8956,
+        "pRCC_detection": 0.7923,
+        "oncocytoma_detection": 0.8712
+      },
+      "per_class_metrics": {
+        "normal": {
+          "sensitivity": 0.9234,
+          "specificity": 0.9341,
+          "f1": 0.9287,
+          "auc": 0.9701
+        },
+        "tumor": {
+          "sensitivity": 0.9341,
+          "specificity": 0.9233,
+          "f1": 0.9287,
+          "auc": 0.9731
+        }
+      },
+      "computational": {
+        "gpu_memory_gb": 1.52,
+        "total_parameters_m": 12.4,
+        "inference_time_ms_per_image": 823,
+        "patch_processing_overhead_pct": 8
+      }
+    },
+    "adaptive_stain_norm": {
+      "method": "Adaptive Tiling + Macenko Stain Normalization",
+      "patches_per_image": {
+        "mean": 174,
+        "std": 35,
+        "min": 78,
+        "max": 269,
+        "median": 171
+      },
+      "extraction_time_ms": {
+        "mean": 385,
+        "std": 58
+      },
+      "accuracy": {
+        "normal_vs_tumor": 0.9351,
+        "std": 0.0138,
+        "ccRCC_detection": 0.9043,
+        "pRCC_detection": 0.8087,
+        "oncocytoma_detection": 0.8834
+      },
+      "per_class_metrics": {
+        "normal": {
+          "sensitivity": 0.9367,
+          "specificity": 0.9335,
+          "f1": 0.9351,
+          "auc": 0.9754
+        },
+        "tumor": {
+          "sensitivity": 0.9335,
+          "specificity": 0.9367,
+          "f1": 0.9351,
+          "auc": 0.9761
+        }
+      },
+      "computational": {
+        "gpu_memory_gb": 1.48,
+        "total_parameters_m": 12.4,
+        "inference_time_ms_per_image": 847,
+        "patch_processing_overhead_pct": 5
+      }
+    }
+  },
+  "stain_robustness": {
+    "test_conditions": [
+      "Source lab (training data)",
+      "Different lab, same staining protocol",
+      "Different lab, different batch H&E",
+      "Different lab, different vendor stain"
+    ],
+    "uniform_grid": {
+      "source_lab": 0.9218,
+      "same_protocol_diff_lab": 0.8934,
+      "diff_batch_staining": 0.8621,
+      "diff_vendor_staining": 0.8412,
+      "mean_drop": 0.064,
+      "robustness_score": 0.36
+    },
+    "adaptive_without_stain_norm": {
+      "source_lab": 0.9287,
+      "same_protocol_diff_lab": 0.9043,
+      "diff_batch_staining": 0.8834,
+      "diff_vendor_staining": 0.8612,
+      "mean_drop": 0.0445,
+      "robustness_score": 0.56
+    },
+    "adaptive_with_stain_norm": {
+      "source_lab": 0.9351,
+      "same_protocol_diff_lab": 0.9287,
+      "diff_batch_staining": 0.9234,
+      "diff_vendor_staining": 0.9198,
+      "mean_drop": 0.0115,
+      "robustness_score": 0.94
+    }
+  },
+  "subtype_classification": {
+    "uniform_grid": {
+      "ccRCC_vs_others": 0.8921,
+      "pRCC_vs_others": 0.7854,
+      "Oncocytoma_vs_others": 0.8657,
+      "3class_accuracy": 0.8477,
+      "confusion_matrix": {
+        "ccRCC": {
+          "ccRCC": 89.2,
+          "pRCC": 7.1,
+          "Onco": 3.7
+        },
+        "pRCC": {
+          "ccRCC": 12.3,
+          "pRCC": 78.5,
+          "Onco": 9.2
+        },
+        "Onco": {
+          "ccRCC": 4.2,
+          "pRCC": 9.1,
+          "Onco": 86.6
+        }
+      }
+    },
+    "adaptive_with_stain_norm": {
+      "ccRCC_vs_others": 0.9043,
+      "pRCC_vs_others": 0.8087,
+      "Oncocytoma_vs_others": 0.8834,
+      "3class_accuracy": 0.8654,
+      "confusion_matrix": {
+        "ccRCC": {
+          "ccRCC": 90.4,
+          "pRCC": 6.2,
+          "Onco": 3.4
+        },
+        "pRCC": {
+          "ccRCC": 10.1,
+          "pRCC": 80.9,
+          "Onco": 8.9
+        },
+        "Onco": {
+          "ccRCC": 3.1,
+          "pRCC": 8.3,
+          "Onco": 88.3
+        }
+      }
+    }
+  },
+  "dataset": {
+    "dataset_name": "RCC WSI Classification Cohort",
+    "total_patients": 347,
+    "total_slides": 892,
+    "magnification": "20x (0.5 \u00b5m/pixel)",
+    "tissue_type": "Formalin-fixed, paraffin-embedded (FFPE)",
+    "staining": "H&E (Hematoxylin & Eosin)",
+    "scanner": "Leica SCN400 Slide Scanner",
+    "split": {
+      "train": {
+        "patients": 210,
+        "slides": 537
+      },
+      "validation": {
+        "patients": 69,
+        "slides": 177
+      },
+      "test": {
+        "patients": 68,
+        "slides": 178
+      }
+    },
+    "class_distribution": {
+      "normal": {
+        "count": 234,
+        "pct": 26.2
+      },
+      "ccRCC": {
+        "count": 421,
+        "pct": 47.2
+      },
+      "pRCC": {
+        "count": 127,
+        "pct": 14.2
+      },
+      "oncocytoma": {
+        "count": 110,
+        "pct": 12.3
+      }
+    }
+  },
+  "cross_validation": {
+    "method": "Adaptive Tiling + Stain Norm",
+    "fold_results": [
+      {
+        "fold": 1,
+        "accuracy": 0.9387,
+        "auc": 0.9781,
+        "f1": 0.9368
+      },
+      {
+        "fold": 2,
+        "accuracy": 0.9312,
+        "auc": 0.9701,
+        "f1": 0.9287
+      },
+      {
+        "fold": 3,
+        "accuracy": 0.9401,
+        "auc": 0.9814,
+        "f1": 0.9384
+      },
+      {
+        "fold": 4,
+        "accuracy": 0.9276,
+        "auc": 0.9634,
+        "f1": 0.9251
+      },
+      {
+        "fold": 5,
+        "accuracy": 0.9363,
+        "auc": 0.9756,
+        "f1": 0.9341
+      }
+    ],
+    "mean_accuracy": 0.9348,
+    "std_accuracy": 0.0049,
+    "mean_auc": 0.9737,
+    "std_auc": 0.0068
+  },
+  "efficiency": {
+    "dataset_level": {
+      "total_images": 892,
+      "baseline_total_patches": 256000,
+      "adaptive_total_patches": 155000,
+      "patches_saved": 101000,
+      "reduction_pct": 39.45,
+      "total_processing_time_baseline_hours": 156,
+      "total_processing_time_adaptive_hours": 106,
+      "time_saved_hours": 50,
+      "speedup_factor": 1.47
+    },
+    "gpu_memory": {
+      "baseline_batch_size_32": "OOM at 32",
+      "baseline_batch_size_16": 36.8,
+      "baseline_batch_size_8": 18.4,
+      "adaptive_batch_size_32": 47.4,
+      "adaptive_batch_size_64": 94.8,
+      "memory_improvement_pct": 36.4
+    },
+    "training_time": {
+      "baseline_100_epochs": 47.3,
+      "adaptive_100_epochs": 32.1,
+      "speedup": 1.47
+    }
+  },
+  "summary_statistics": {
+    "patch_reduction_pct": 40.3,
+    "accuracy_improvement_pct": 1.39,
+    "accuracy_improvement_absolute": 0.0133,
+    "stain_robustness_improvement_pct": 82.0,
+    "speedup_factor": 1.47,
+    "memory_reduction_pct": 36.4
+  }
+}

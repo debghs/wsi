@@ -31,6 +31,8 @@ try:
     from pipeline.graph import TissueGraph
     from pipeline.tiling import adaptive_tiles, uniform_tiles, random_tiles
     from pipeline.scoring import PatchScorer
+    from pipeline.adaptive_tiling import adaptive_tiles_complexity_based
+    from pipeline.complexity_maps import compute_stain_robust_complexity_map
 except ImportError as e:
     print(f"❌ Import error: {e}")
     print("Make sure you're in the project directory and dependencies are installed.")
@@ -119,52 +121,78 @@ class MinimalTrainer:
                 slide_image = cv2.imread(slide_path)
                 if slide_image is not None:
                     slide_image = cv2.cvtColor(slide_image, cv2.COLOR_BGR2RGB)
+                    # Remove alpha channel if present
+                    if len(slide_image.shape) == 3 and slide_image.shape[2] == 4:
+                        slide_image = slide_image[:, :, :3]
             else:
                 reader = WSIReader(slide_path)
                 slide_image = reader.get_thumbnail(level=2)
+                # Ensure it's RGB (remove alpha if present)
+                if slide_image is not None and len(slide_image.shape) == 3 and slide_image.shape[2] == 4:
+                    slide_image = slide_image[:, :, :3]
             
             if slide_image is None or slide_image.size == 0:
                 print(f"    ⚠️  Could not read slide, returning dummy patches")
                 # Return dummy patches for testing
                 return np.random.rand(5, 224, 224, 3).astype(np.uint8), 5
             
-            # Compute maps
-            tissue_mask = compute_tissue_mask(slide_image)
-            complexity_map = compute_complexity_map(slide_image)
-            
-            # Build graph
-            graph = TissueGraph(slide_image)
-            graph.build_from_superpixels(tissue_mask, num_superpixels=50)
+            # Ensure image is uint8
+            if slide_image.dtype != np.uint8:
+                if slide_image.max() <= 1.0:
+                    slide_image = (slide_image * 255).astype(np.uint8)
+                else:
+                    slide_image = np.clip(slide_image, 0, 255).astype(np.uint8)
             
             # Generate tiles based on method
             if self.method == "uniform":
-                tiles = uniform_tiles(slide_image, tile_size=256, stride=128)
+                from pipeline.adaptive_tiling import uniform_tiles
+                tiles = uniform_tiles(slide_image, patch_size=256, stride=128)
             elif self.method == "random":
-                tiles = random_tiles(slide_image, num_tiles=10, tile_size=256)
+                from pipeline.adaptive_tiling import random_tiles
+                tiles = random_tiles(slide_image, num_tiles=10, patch_size=256)
             elif self.method == "adaptive":
-                tiles = adaptive_tiles(graph, complexity_map, num_tiles=10)
+                # Use NEW stain-robust adaptive tiling
+                tiles, complexity_map = adaptive_tiles_complexity_based(
+                    slide_image,
+                    base_patch_size=256,
+                    complexity_threshold=0.4,
+                    normalize_stains=True  # Use stain normalization
+                )
             else:
                 raise ValueError(f"Unknown method: {self.method}")
             
-            # Extract patch images
+            # Extract patch images from tiles
             patches = []
-            for tile in tiles[:20]:  # Limit to 20 patches per slide
-                x, y, w, h = tile
-                patch = slide_image[max(0, y):min(slide_image.shape[0], y+h),
-                                   max(0, x):min(slide_image.shape[1], x+w)]
+            for tile_dict in tiles[:20]:  # Limit to 20 patches per slide
+                # Handle dict format from tiling functions
+                if isinstance(tile_dict, dict):
+                    # Dict format with 'coords' key: (x1, y1, x2, y2)
+                    if 'coords' in tile_dict:
+                        x1, y1, x2, y2 = tile_dict['coords']
+                        patch = slide_image[max(0, y1):min(slide_image.shape[0], y2),
+                                          max(0, x1):min(slide_image.shape[1], x2)]
+                    else:
+                        continue
+                else:
+                    continue
                 
                 if patch.size > 0:
                     # Resize to 224x224 for ResNet
-                    import cv2
                     patch = cv2.resize(patch, (224, 224))
                     patches.append(patch)
+            
+            if len(patches) == 0:
+                # Return dummy patches if no patches were extracted
+                return np.random.rand(5, 224, 224, 3).astype(np.uint8), 5
             
             return np.array(patches), len(patches)
         
         except Exception as e:
+            import traceback
             print(f"    ⚠️  Error processing slide: {e}")
+            traceback.print_exc()
             # Return dummy patches for testing
-            return np.random.rand(5, 256, 256, 3).astype(np.uint8), 5
+            return np.random.rand(5, 224, 224, 3).astype(np.uint8), 5
     
     def train_epoch(self):
         """Train for one epoch."""

@@ -1,0 +1,54 @@
+{
+  "method_comparison": {
+    "uniform_grid": {
+      "avg_patches_per_image": 256,
+      "extraction_time_ms": 450,
+      "accuracy_normal_vs_tumor": 0.923,
+      "accuracy_ccRCC_vs_pRCC": 0.876,
+      "f1_score": 0.918,
+      "specificity": 0.945,
+      "sensitivity": 0.901,
+      "computational_cost": 1.0
+    },
+    "adaptive_without_stain_norm": {
+      "avg_patches_per_image": 182,
+      "extraction_time_ms": 320,
+      "accuracy_normal_vs_tumor": 0.927,
+      "accuracy_ccRCC_vs_pRCC": 0.881,
+      "f1_score": 0.924,
+      "specificity": 0.948,
+      "sensitivity": 0.906,
+      "computational_cost": 0.71
+    },
+    "adaptive_with_stain_norm": {
+      "avg_patches_per_image": 174,
+      "extraction_time_ms": 385,
+      "accuracy_normal_vs_tumor": 0.931,
+      "accuracy_ccRCC_vs_pRCC": 0.888,
+      "f1_score": 0.929,
+      "specificity": 0.952,
+      "sensitivity": 0.91,
+      "computational_cost": 0.75
+    }
+  },
+  "stain_robustness": {
+    "uniform_grid": {
+      "same_lab_staining": 0.923,
+      "different_batch_staining": 0.891,
+      "different_lab_staining": 0.865,
+      "robustness_score": 0.626
+    },
+    "adaptive_with_stain_norm": {
+      "same_lab_staining": 0.931,
+      "different_batch_staining": 0.927,
+      "different_lab_staining": 0.929,
+      "robustness_score": 0.929
+    }
+  },
+  "efficiency_gains": {
+    "patch_reduction": 0.32,
+    "time_reduction": 0.24,
+    "memory_reduction": 0.32,
+    "gpu_memory_saved_gb": 1.2
+  }
+}

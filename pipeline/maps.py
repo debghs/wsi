@@ -19,6 +19,21 @@ def compute_tissue_mask(image, s_threshold=20):
     Returns:
         np.ndarray: Tissue mask of shape (H, W) in [0, 1]
     """
+    # Ensure image is 3D RGB
+    if len(image.shape) != 3 or image.shape[2] not in [3, 4]:
+        raise ValueError(f"Expected RGB image, got shape {image.shape}")
+    
+    # Remove alpha channel if present
+    if image.shape[2] == 4:
+        image = image[:, :, :3]
+    
+    # Ensure uint8
+    if image.dtype != np.uint8:
+        if image.max() <= 1.0:
+            image = (image * 255).astype(np.uint8)
+        else:
+            image = np.clip(image, 0, 255).astype(np.uint8)
+    
     # Convert to HSV
     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
     
@@ -40,6 +55,21 @@ def compute_complexity_map(image, window_size=7):
     Returns:
         np.ndarray: Complexity map in [0, 1]
     """
+    # Ensure image is 3D RGB
+    if len(image.shape) != 3 or image.shape[2] not in [3, 4]:
+        raise ValueError(f"Expected RGB image, got shape {image.shape}")
+    
+    # Remove alpha channel if present
+    if image.shape[2] == 4:
+        image = image[:, :, :3]
+    
+    # Ensure uint8
+    if image.dtype != np.uint8:
+        if image.max() <= 1.0:
+            image = (image * 255).astype(np.uint8)
+        else:
+            image = np.clip(image, 0, 255).astype(np.uint8)
+    
     # Convert to grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     
@@ -68,6 +98,21 @@ def compute_uncertainty_map(image, edge_threshold_low=50, edge_threshold_high=15
     Returns:
         np.ndarray: Uncertainty map in [0, 1]
     """
+    # Ensure image is 3D RGB
+    if len(image.shape) != 3 or image.shape[2] not in [3, 4]:
+        raise ValueError(f"Expected RGB image, got shape {image.shape}")
+    
+    # Remove alpha channel if present
+    if image.shape[2] == 4:
+        image = image[:, :, :3]
+    
+    # Ensure uint8
+    if image.dtype != np.uint8:
+        if image.max() <= 1.0:
+            image = (image * 255).astype(np.uint8)
+        else:
+            image = np.clip(image, 0, 255).astype(np.uint8)
+    
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     
     # Canny edge detection

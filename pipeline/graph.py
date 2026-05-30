@@ -24,16 +24,56 @@ class TissueGraph:
             complexity (np.ndarray): Complexity map (H, W)
             n_segments (int): Number of superpixels
         """
+        # Ensure image is 3D RGB (remove alpha channel if present)
+        if len(image.shape) == 3:
+            if image.shape[2] == 4:
+                # RGBA -> RGB
+                image = image[:, :, :3]
+            elif image.shape[2] != 3:
+                raise ValueError(f"Expected RGB image with 3 channels, got {image.shape[2]}")
+        else:
+            raise ValueError(f"Expected 3D image, got shape {image.shape}")
+        
+        # Ensure image is in proper format for SLIC
+        if image.dtype == np.uint8:
+            # uint8 is expected by SLIC
+            pass
+        elif image.dtype in [np.float32, np.float64]:
+            # Convert to uint8
+            if image.max() <= 1.0:
+                image = (image * 255).astype(np.uint8)
+            else:
+                image = np.clip(image, 0, 255).astype(np.uint8)
+        
         self.image = image
         self.tissue_mask = tissue_mask
         self.complexity = complexity
         self.n_segments = n_segments
         
         # Generate superpixels
-        self.segments = slic(image, n_segments=n_segments, compactness=10)
+        try:
+            self.segments = slic(self.image, n_segments=n_segments, compactness=10)
+        except Exception as e:
+            print(f"    ⚠️  Error in SLIC segmentation: {e}")
+            # Fallback: create simple grid-based segments
+            self.segments = self._fallback_segments()
         
         # Build graph
         self.graph = self._build_graph()
+    
+    def _fallback_segments(self):
+        """Create simple grid-based segments as fallback."""
+        h, w = self.image.shape[:2]
+        seg_size = int(np.sqrt(h * w / self.n_segments))
+        segments = np.zeros((h, w), dtype=np.int32)
+        seg_id = 0
+        
+        for y in range(0, h, seg_size):
+            for x in range(0, w, seg_size):
+                segments[y:y+seg_size, x:x+seg_size] = seg_id
+                seg_id += 1
+        
+        return segments
     
     def _build_graph(self):
         """

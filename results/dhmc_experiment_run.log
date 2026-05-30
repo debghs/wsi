@@ -1,0 +1,230 @@
+/home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Building labels from MetaData_Release_1.1.csv ...
+Wrote /home/debghs/coding/final_yr_project/datasets/DHMC_wsi_03/labels.csv (50 slides)
+Diagnosis counts:
+ diagnosis
+Clearcell     33
+Oncocytoma    17
+
+Official split:
+ split
+Train    48
+Test      2
+
+Label counts:
+ label
+1    33
+0    17
+
+============================================================
+Running method: adaptive
+============================================================
+
+DHMC trainer | method=adaptive | device=cpu
+Slides: 50 | train=40 | val=10
+Labels 0/1: 17 / 33 | split_mode=stratified
+
+Epoch 1/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:10<07:00, 10.78s/it]train:   5%|▌         | 2/40 [00:25<08:23, 13.24s/it]train:   8%|▊         | 3/40 [00:39<08:18, 13.48s/it]train:  10%|█         | 4/40 [00:51<07:39, 12.77s/it]train:  12%|█▎        | 5/40 [01:01<06:58, 11.95s/it]train:  15%|█▌        | 6/40 [01:14<06:51, 12.09s/it]train:  18%|█▊        | 7/40 [01:24<06:23, 11.62s/it]train:  20%|██        | 8/40 [01:36<06:12, 11.63s/it]train:  22%|██▎       | 9/40 [01:49<06:10, 11.96s/it]train:  25%|██▌       | 10/40 [01:58<05:34, 11.16s/it]train:  28%|██▊       | 11/40 [02:10<05:31, 11.42s/it]train:  30%|███       | 12/40 [02:21<05:20, 11.44s/it]train:  32%|███▎      | 13/40 [02:34<05:17, 11.75s/it]train:  35%|███▌      | 14/40 [02:46<05:07, 11.82s/it]train:  38%|███▊      | 15/40 [02:56<04:43, 11.35s/it]train:  40%|████      | 16/40 [03:07<04:27, 11.16s/it]train:  42%|████▎     | 17/40 [03:17<04:09, 10.85s/it]train:  45%|████▌     | 18/40 [03:32<04:25, 12.05s/it]train:  48%|████▊     | 19/40 [03:40<03:51, 11.01s/it]train:  50%|█████     | 20/40 [03:50<03:31, 10.59s/it]train:  52%|█████▎    | 21/40 [04:03<03:32, 11.20s/it]train:  55%|█████▌    | 22/40 [04:12<03:11, 10.67s/it]train:  57%|█████▊    | 23/40 [04:23<03:04, 10.87s/it]train:  60%|██████    | 24/40 [04:35<02:58, 11.13s/it]train:  62%|██████▎   | 25/40 [04:48<02:54, 11.64s/it]train:  65%|██████▌   | 26/40 [05:00<02:44, 11.77s/it]train:  68%|██████▊   | 27/40 [05:11<02:28, 11.42s/it]train:  70%|███████   | 28/40 [05:22<02:18, 11.53s/it]train:  72%|███████▎  | 29/40 [05:36<02:12, 12.08s/it]train:  75%|███████▌  | 30/40 [05:48<02:00, 12.02s/it]train:  78%|███████▊  | 31/40 [05:58<01:44, 11.59s/it]train:  80%|████████  | 32/40 [06:09<01:29, 11.19s/it]train:  82%|████████▎ | 33/40 [06:19<01:17, 11.04s/it]train:  85%|████████▌ | 34/40 [06:31<01:08, 11.39s/it]train:  88%|████████▊ | 35/40 [06:43<00:57, 11.57s/it]train:  90%|█████████ | 36/40 [06:57<00:48, 12.15s/it]train:  92%|█████████▎| 37/40 [07:07<00:34, 11.43s/it]train:  95%|█████████▌| 38/40 [07:17<00:22, 11.13s/it]train:  98%|█████████▊| 39/40 [07:29<00:11, 11.25s/it]train: 100%|██████████| 40/40 [07:40<00:00, 11.23s/it]                                                      ⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:08<01:19,  8.83s/it]val:  20%|██        | 2/10 [00:18<01:15,  9.47s/it]val:  30%|███       | 3/10 [00:29<01:08,  9.84s/it]val:  40%|████      | 4/10 [00:40<01:01, 10.30s/it]val:  50%|█████     | 5/10 [00:51<00:53, 10.66s/it]val:  60%|██████    | 6/10 [01:02<00:42, 10.71s/it]val:  70%|███████   | 7/10 [01:13<00:32, 10.87s/it]val:  80%|████████  | 8/10 [01:23<00:21, 10.57s/it]val:  90%|█████████ | 9/10 [01:33<00:10, 10.61s/it]val: 100%|██████████| 10/10 [01:45<00:00, 10.84s/it]                                                    ⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+  loss=0.8409 train_acc=0.625 val_acc=0.300 val_auc=0.476
+Epoch 2/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:09<06:21,  9.78s/it]train:   5%|▌         | 2/40 [00:22<07:07, 11.25s/it]train:   8%|▊         | 3/40 [00:34<07:22, 11.97s/it]train:  10%|█         | 4/40 [00:46<07:07, 11.87s/it]train:  12%|█▎        | 5/40 [00:56<06:35, 11.30s/it]train:  15%|█▌        | 6/40 [01:09<06:38, 11.71s/it]train:  18%|█▊        | 7/40 [01:19<06:11, 11.24s/it]train:  20%|██        | 8/40 [01:30<05:58, 11.21s/it]train:  22%|██▎       | 9/40 [01:43<06:02, 11.71s/it]train:  25%|██▌       | 10/40 [01:53<05:31, 11.06s/it]train:  28%|██▊       | 11/40 [02:05<05:29, 11.35s/it]train:  30%|███       | 12/40 [02:15<05:10, 11.09s/it]train:  32%|███▎      | 13/40 [02:27<05:05, 11.30s/it]train:  35%|███▌      | 14/40 [02:38<04:50, 11.17s/it]train:  38%|███▊      | 15/40 [02:48<04:30, 10.83s/it]train:  40%|████      | 16/40 [02:59<04:20, 10.86s/it]train:  42%|████▎     | 17/40 [03:09<04:04, 10.62s/it]train:  45%|████▌     | 18/40 [03:25<04:32, 12.39s/it]train:  48%|████▊     | 19/40 [03:34<03:55, 11.23s/it]train:  50%|█████     | 20/40 [03:43<03:33, 10.65s/it]train:  52%|█████▎    | 21/40 [03:56<03:32, 11.17s/it]train:  55%|█████▌    | 22/40 [04:06<03:14, 10.81s/it]train:  57%|█████▊    | 23/40 [04:17<03:08, 11.09s/it]train:  60%|██████    | 24/40 [04:30<03:03, 11.48s/it]train:  62%|██████▎   | 25/40 [04:43<02:59, 11.95s/it]train:  65%|██████▌   | 26/40 [04:55<02:48, 12.04s/it]train:  68%|██████▊   | 27/40 [05:06<02:31, 11.65s/it]train:  70%|███████   | 28/40 [05:18<02:20, 11.72s/it]train:  72%|███████▎  | 29/40 [05:31<02:14, 12.21s/it]train:  75%|███████▌  | 30/40 [05:43<02:00, 12.09s/it]train:  78%|███████▊  | 31/40 [05:53<01:44, 11.64s/it]train:  80%|████████  | 32/40 [06:03<01:28, 11.12s/it]train:  82%|████████▎ | 33/40 [06:14<01:17, 11.01s/it]train:  85%|████████▌ | 34/40 [06:26<01:07, 11.31s/it]train:  88%|████████▊ | 35/40 [06:41<01:02, 12.47s/it]train:  90%|█████████ | 36/40 [07:00<00:56, 14.23s/it]train:  92%|█████████▎| 37/40 [07:10<00:38, 12.94s/it]train:  95%|█████████▌| 38/40 [07:20<00:24, 12.26s/it]train:  98%|█████████▊| 39/40 [07:32<00:12, 12.12s/it]train: 100%|██████████| 40/40 [07:44<00:00, 12.02s/it]                                                      ⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:08<01:19,  8.82s/it]val:  20%|██        | 2/10 [00:18<01:16,  9.57s/it]val:  30%|███       | 3/10 [00:29<01:08,  9.81s/it]val:  40%|████      | 4/10 [00:39<01:01, 10.21s/it]val:  50%|█████     | 5/10 [00:50<00:52, 10.52s/it]val:  60%|██████    | 6/10 [01:01<00:42, 10.59s/it]val:  70%|███████   | 7/10 [01:12<00:32, 10.69s/it]val:  80%|████████  | 8/10 [01:22<00:20, 10.38s/it]val:  90%|█████████ | 9/10 [01:32<00:10, 10.43s/it]val: 100%|██████████| 10/10 [01:43<00:00, 10.63s/it]                                                    ⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+  loss=0.7383 train_acc=0.625 val_acc=0.400 val_auc=0.476
+Epoch 3/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:09<06:15,  9.63s/it]train:   5%|▌         | 2/40 [00:22<07:11, 11.36s/it]train:   8%|▊         | 3/40 [00:35<07:26, 12.07s/it]train:  10%|█         | 4/40 [00:46<07:08, 11.91s/it]train:  12%|█▎        | 5/40 [00:56<06:35, 11.29s/it]train:  15%|█▌        | 6/40 [01:09<06:39, 11.74s/it]train:  18%|█▊        | 7/40 [01:19<06:11, 11.25s/it]train:  20%|██        | 8/40 [01:30<05:54, 11.06s/it]train:  22%|██▎       | 9/40 [01:43<05:58, 11.57s/it]train:  25%|██▌       | 10/40 [01:52<05:26, 10.87s/it]train:  28%|██▊       | 11/40 [02:04<05:25, 11.22s/it]train:  30%|███       | 12/40 [02:15<05:10, 11.08s/it]train:  32%|███▎      | 13/40 [02:26<05:03, 11.26s/it]train:  35%|███▌      | 14/40 [02:37<04:51, 11.20s/it]train:  38%|███▊      | 15/40 [02:47<04:30, 10.82s/it]train:  40%|████      | 16/40 [02:59<04:22, 10.94s/it]train:  42%|████▎     | 17/40 [03:09<04:06, 10.70s/it]train:  45%|████▌     | 18/40 [03:24<04:22, 11.93s/it]train:  48%|████▊     | 19/40 [03:32<03:49, 10.93s/it]train:  50%|█████     | 20/40 [03:42<03:29, 10.49s/it]train:  52%|█████▎    | 21/40 [03:54<03:29, 11.04s/it]train:  55%|█████▌    | 22/40 [04:04<03:12, 10.69s/it]train:  57%|█████▊    | 23/40 [04:16<03:08, 11.11s/it]train:  60%|██████    | 24/40 [04:32<03:20, 12.53s/it]train:  62%|██████▎   | 25/40 [04:50<03:34, 14.33s/it]train:  65%|██████▌   | 26/40 [05:03<03:14, 13.86s/it]train:  68%|██████▊   | 27/40 [05:14<02:50, 13.09s/it]train:  70%|███████   | 28/40 [05:27<02:34, 12.85s/it]train:  72%|███████▎  | 29/40 [05:41<02:24, 13.17s/it]train:  75%|███████▌  | 30/40 [05:52<02:07, 12.79s/it]train:  78%|███████▊  | 31/40 [06:03<01:49, 12.19s/it]train:  80%|████████  | 32/40 [06:14<01:33, 11.73s/it]train:  82%|████████▎ | 33/40 [06:25<01:20, 11.45s/it]train:  85%|████████▌ | 34/40 [06:37<01:10, 11.77s/it]train:  88%|████████▊ | 35/40 [06:50<00:59, 11.94s/it]train:  90%|█████████ | 36/40 [07:03<00:49, 12.44s/it]train:  92%|█████████▎| 37/40 [07:13<00:35, 11.79s/it]train:  95%|█████████▌| 38/40 [07:24<00:22, 11.41s/it]train:  98%|█████████▊| 39/40 [07:36<00:11, 11.46s/it]train: 100%|██████████| 40/40 [07:47<00:00, 11.37s/it]                                                      ⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:08<01:19,  8.84s/it]val:  20%|██        | 2/10 [00:19<01:17,  9.65s/it]val:  30%|███       | 3/10 [00:29<01:08,  9.84s/it]val:  40%|████      | 4/10 [00:39<01:01, 10.23s/it]val:  50%|█████     | 5/10 [00:51<00:53, 10.63s/it]val:  60%|██████    | 6/10 [01:02<00:42, 10.74s/it]val:  70%|███████   | 7/10 [01:13<00:32, 10.81s/it]val:  80%|████████  | 8/10 [01:22<00:20, 10.49s/it]val:  90%|█████████ | 9/10 [01:33<00:10, 10.60s/it]val: 100%|██████████| 10/10 [01:44<00:00, 10.76s/it]                                                    /home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+⚠️  Stain matrix singular, skipping normalization
+  loss=0.3529 train_acc=0.800 val_acc=0.900 val_auc=1.000
+
+Done (1706s). Results: /home/debghs/coding/final_yr_project/results/dhmc_wsi_03_experiment_20260530_144415/adaptive/results.json
+
+============================================================
+Running method: uniform
+============================================================
+
+DHMC trainer | method=uniform | device=cpu
+Slides: 50 | train=40 | val=10
+Labels 0/1: 17 / 33 | split_mode=stratified
+
+Epoch 1/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]                                             Traceback (most recent call last):
+  File "/home/debghs/coding/final_yr_project/run_dhmc_experiment.py", line 76, in <module>
+    main()
+  File "/home/debghs/coding/final_yr_project/run_dhmc_experiment.py", line 45, in main
+    results, _ = trainer.train(results_dir=method_dir)
+  File "/home/debghs/coding/final_yr_project/train_dhmc_png.py", line 255, in train
+    train_loss, train_acc = self.train_epoch(record_patches=(epoch == 0))
+  File "/home/debghs/coding/final_yr_project/train_dhmc_png.py", line 205, in train_epoch
+    patches = self.extract_patches(image_path, count_patch=record_patches)
+  File "/home/debghs/coding/final_yr_project/train_dhmc_png.py", line 161, in extract_patches
+    tiles = uniform_tiles(image_array, patch_size=256, overlap=0.5)
+TypeError: uniform_tiles() got an unexpected keyword argument 'overlap'
+/home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/debghs/.local/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+
+DHMC trainer | method=uniform | device=cpu
+Slides: 50 | train=40 | val=10
+Labels 0/1: 17 / 33 | split_mode=stratified
+
+Epoch 1/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:05<03:31,  5.43s/it]train:   5%|▌         | 2/40 [00:15<05:02,  7.96s/it]train:   8%|▊         | 3/40 [00:24<05:26,  8.81s/it]train:  10%|█         | 4/40 [00:34<05:28,  9.12s/it]train:  12%|█▎        | 5/40 [00:40<04:34,  7.85s/it]train:  15%|█▌        | 6/40 [00:47<04:23,  7.74s/it]train:  18%|█▊        | 7/40 [00:53<03:55,  7.13s/it]train:  20%|██        | 8/40 [00:59<03:40,  6.89s/it]train:  22%|██▎       | 9/40 [01:07<03:39,  7.09s/it]train:  25%|██▌       | 10/40 [01:12<03:13,  6.44s/it]train:  28%|██▊       | 11/40 [01:19<03:09,  6.53s/it]train:  30%|███       | 12/40 [01:24<02:52,  6.17s/it]train:  32%|███▎      | 13/40 [01:29<02:36,  5.78s/it]train:  35%|███▌      | 14/40 [01:35<02:29,  5.75s/it]train:  38%|███▊      | 15/40 [01:39<02:16,  5.45s/it]train:  40%|████      | 16/40 [01:45<02:10,  5.43s/it]train:  42%|████▎     | 17/40 [01:51<02:07,  5.56s/it]train:  45%|████▌     | 18/40 [02:00<02:24,  6.58s/it]train:  48%|████▊     | 19/40 [02:04<02:03,  5.89s/it]train:  50%|█████     | 20/40 [02:09<01:52,  5.62s/it]train:  52%|█████▎    | 21/40 [02:14<01:45,  5.55s/it]train:  55%|█████▌    | 22/40 [02:18<01:31,  5.07s/it]train:  57%|█████▊    | 23/40 [02:25<01:34,  5.53s/it]train:  60%|██████    | 24/40 [02:31<01:32,  5.77s/it]train:  62%|██████▎   | 25/40 [02:38<01:33,  6.26s/it]train:  65%|██████▌   | 26/40 [02:45<01:29,  6.42s/it]train:  68%|██████▊   | 27/40 [02:50<01:15,  5.84s/it]train:  70%|███████   | 28/40 [02:56<01:10,  5.84s/it]train:  72%|███████▎  | 29/40 [03:02<01:04,  5.88s/it]train:  75%|███████▌  | 30/40 [03:08<01:01,  6.11s/it]train:  78%|███████▊  | 31/40 [03:14<00:54,  6.08s/it]train:  80%|████████  | 32/40 [03:20<00:46,  5.86s/it]train:  82%|████████▎ | 33/40 [03:25<00:40,  5.73s/it]train:  85%|████████▌ | 34/40 [03:31<00:34,  5.78s/it]train:  88%|████████▊ | 35/40 [03:37<00:29,  5.88s/it]train:  90%|█████████ | 36/40 [03:43<00:23,  5.90s/it]train:  92%|█████████▎| 37/40 [03:48<00:16,  5.51s/it]train:  95%|█████████▌| 38/40 [03:53<00:10,  5.46s/it]train:  98%|█████████▊| 39/40 [03:59<00:05,  5.53s/it]train: 100%|██████████| 40/40 [04:04<00:00,  5.62s/it]                                                      val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:03<00:34,  3.80s/it]val:  20%|██        | 2/10 [00:08<00:35,  4.42s/it]val:  30%|███       | 3/10 [00:11<00:27,  3.91s/it]val:  40%|████      | 4/10 [00:17<00:26,  4.36s/it]val:  50%|█████     | 5/10 [00:21<00:22,  4.50s/it]val:  60%|██████    | 6/10 [00:26<00:17,  4.49s/it]val:  70%|███████   | 7/10 [00:31<00:13,  4.65s/it]val:  80%|████████  | 8/10 [00:35<00:09,  4.57s/it]val:  90%|█████████ | 9/10 [00:39<00:04,  4.35s/it]val: 100%|██████████| 10/10 [00:44<00:00,  4.50s/it]                                                      loss=0.8375 train_acc=0.600 val_acc=0.300 val_auc=0.476
+Epoch 2/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:04<02:58,  4.59s/it]train:   5%|▌         | 2/40 [00:11<03:42,  5.86s/it]train:   8%|▊         | 3/40 [00:17<03:44,  6.05s/it]train:  10%|█         | 4/40 [00:23<03:39,  6.09s/it]train:  12%|█▎        | 5/40 [00:29<03:24,  5.83s/it]train:  15%|█▌        | 6/40 [00:35<03:28,  6.13s/it]train:  18%|█▊        | 7/40 [00:41<03:20,  6.07s/it]train:  20%|██        | 8/40 [00:47<03:15,  6.10s/it]train:  22%|██▎       | 9/40 [00:54<03:18,  6.39s/it]train:  25%|██▌       | 10/40 [00:59<02:57,  5.91s/it]train:  28%|██▊       | 11/40 [01:05<02:50,  5.88s/it]train:  30%|███       | 12/40 [01:10<02:38,  5.66s/it]train:  32%|███▎      | 13/40 [01:15<02:23,  5.31s/it]train:  35%|███▌      | 14/40 [01:20<02:19,  5.36s/it]train:  38%|███▊      | 15/40 [01:25<02:09,  5.17s/it]train:  40%|████      | 16/40 [01:30<02:05,  5.21s/it]train:  42%|████▎     | 17/40 [01:36<02:03,  5.38s/it]train:  45%|████▌     | 18/40 [01:45<02:18,  6.31s/it]train:  48%|████▊     | 19/40 [01:48<01:57,  5.57s/it]train:  50%|█████     | 20/40 [01:53<01:47,  5.39s/it]train:  52%|█████▎    | 21/40 [01:59<01:42,  5.39s/it]train:  55%|█████▌    | 22/40 [02:03<01:29,  4.99s/it]train:  57%|█████▊    | 23/40 [02:11<01:41,  5.96s/it]train:  60%|██████    | 24/40 [02:20<01:52,  7.01s/it]train:  62%|██████▎   | 25/40 [02:28<01:45,  7.01s/it]train:  65%|██████▌   | 26/40 [02:34<01:36,  6.92s/it]train:  68%|██████▊   | 27/40 [02:39<01:20,  6.19s/it]train:  70%|███████   | 28/40 [02:45<01:13,  6.11s/it]train:  72%|███████▎  | 29/40 [02:50<01:05,  5.97s/it]train:  75%|███████▌  | 30/40 [02:57<01:02,  6.27s/it]train:  78%|███████▊  | 31/40 [03:03<00:55,  6.17s/it]train:  80%|████████  | 32/40 [03:08<00:47,  5.91s/it]train:  82%|████████▎ | 33/40 [03:14<00:40,  5.82s/it]train:  85%|████████▌ | 34/40 [03:20<00:35,  5.86s/it]train:  88%|████████▊ | 35/40 [03:26<00:29,  5.90s/it]train:  90%|█████████ | 36/40 [03:32<00:23,  5.90s/it]train:  92%|█████████▎| 37/40 [03:36<00:16,  5.49s/it]train:  95%|█████████▌| 38/40 [03:42<00:10,  5.43s/it]train:  98%|█████████▊| 39/40 [03:47<00:05,  5.48s/it]train: 100%|██████████| 40/40 [03:53<00:00,  5.55s/it]                                                      val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:03<00:31,  3.53s/it]val:  20%|██        | 2/10 [00:08<00:35,  4.38s/it]val:  30%|███       | 3/10 [00:11<00:27,  3.89s/it]val:  40%|████      | 4/10 [00:17<00:26,  4.43s/it]val:  50%|█████     | 5/10 [00:21<00:23,  4.61s/it]val:  60%|██████    | 6/10 [00:26<00:18,  4.54s/it]val:  70%|███████   | 7/10 [00:31<00:14,  4.67s/it]val:  80%|████████  | 8/10 [00:35<00:09,  4.66s/it]val:  90%|█████████ | 9/10 [00:39<00:04,  4.39s/it]val: 100%|██████████| 10/10 [00:44<00:00,  4.53s/it]                                                      loss=0.8150 train_acc=0.600 val_acc=0.700 val_auc=0.333
+Epoch 3/3
+train:   0%|          | 0/40 [00:00<?, ?it/s]train:   2%|▎         | 1/40 [00:04<03:02,  4.68s/it]train:   5%|▌         | 2/40 [00:11<03:42,  5.87s/it]train:   8%|▊         | 3/40 [00:17<03:47,  6.15s/it]train:  10%|█         | 4/40 [00:23<03:38,  6.06s/it]train:  12%|█▎        | 5/40 [00:29<03:22,  5.80s/it]train:  15%|█▌        | 6/40 [00:35<03:29,  6.16s/it]train:  18%|█▊        | 7/40 [00:42<03:22,  6.13s/it]train:  20%|██        | 8/40 [00:48<03:18,  6.19s/it]train:  22%|██▎       | 9/40 [00:55<03:18,  6.42s/it]train:  25%|██▌       | 10/40 [01:00<02:58,  5.97s/it]train:  28%|██▊       | 11/40 [01:06<02:51,  5.93s/it]train:  30%|███       | 12/40 [01:11<02:38,  5.68s/it]train:  32%|███▎      | 13/40 [01:15<02:23,  5.31s/it]train:  35%|███▌      | 14/40 [01:20<02:17,  5.31s/it]train:  38%|███▊      | 15/40 [01:25<02:08,  5.15s/it]train:  40%|████      | 16/40 [01:30<02:04,  5.18s/it]train:  42%|████▎     | 17/40 [01:36<02:04,  5.40s/it]train:  45%|████▌     | 18/40 [01:45<02:18,  6.28s/it]train:  48%|████▊     | 19/40 [01:48<01:55,  5.52s/it]train:  50%|█████     | 20/40 [01:53<01:47,  5.36s/it]train:  52%|█████▎    | 21/40 [01:59<01:42,  5.37s/it]train:  55%|█████▌    | 22/40 [02:03<01:29,  4.99s/it]train:  57%|█████▊    | 23/40 [02:09<01:30,  5.30s/it]train:  60%|██████    | 24/40 [02:15<01:27,  5.47s/it]train:  62%|██████▎   | 25/40 [02:22<01:28,  5.89s/it]train:  65%|██████▌   | 26/40 [02:29<01:26,  6.17s/it]train:  68%|██████▊   | 27/40 [02:33<01:13,  5.67s/it]train:  70%|███████   | 28/40 [02:39<01:09,  5.83s/it]train:  72%|███████▎  | 29/40 [02:45<01:03,  5.82s/it]train:  75%|███████▌  | 30/40 [02:52<01:00,  6.08s/it]train:  78%|███████▊  | 31/40 [02:58<00:54,  6.07s/it]train:  80%|████████  | 32/40 [03:03<00:46,  5.85s/it]train:  82%|████████▎ | 33/40 [03:09<00:40,  5.73s/it]train:  85%|████████▌ | 34/40 [03:15<00:34,  5.81s/it]train:  88%|████████▊ | 35/40 [03:21<00:29,  5.90s/it]train:  90%|█████████ | 36/40 [03:27<00:23,  5.93s/it]train:  92%|█████████▎| 37/40 [03:31<00:16,  5.52s/it]train:  95%|█████████▌| 38/40 [03:37<00:10,  5.47s/it]train:  98%|█████████▊| 39/40 [03:42<00:05,  5.53s/it]train: 100%|██████████| 40/40 [03:48<00:00,  5.63s/it]                                                      val:   0%|          | 0/10 [00:00<?, ?it/s]val:  10%|█         | 1/10 [00:03<00:32,  3.61s/it]val:  20%|██        | 2/10 [00:08<00:34,  4.35s/it]val:  30%|███       | 3/10 [00:11<00:27,  3.88s/it]val:  40%|████      | 4/10 [00:17<00:26,  4.42s/it]val:  50%|█████     | 5/10 [00:21<00:22,  4.58s/it]val:  60%|██████    | 6/10 [00:26<00:18,  4.55s/it]val:  70%|███████   | 7/10 [00:31<00:14,  4.71s/it]val:  80%|████████  | 8/10 [00:36<00:09,  4.70s/it]val:  90%|█████████ | 9/10 [00:39<00:04,  4.43s/it]val: 100%|██████████| 10/10 [00:44<00:00,  4.57s/it]                                                      loss=0.8268 train_acc=0.500 val_acc=0.700 val_auc=0.714
+
+Done (840s). Results: results/dhmc_wsi_03_experiment_20260530_144415/uniform/results.json

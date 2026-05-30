@@ -24,46 +24,62 @@ def adaptive_tiles(image, graph, base_tile=256, min_tile=64, max_tile=512):
     tiles = []
     h, w = image.shape[:2]
     
-    valid_nodes = graph.filter_by_tissue_probability(threshold=0.1)
+    try:
+        valid_nodes = graph.filter_by_tissue_probability(threshold=0.1)
+        
+        if len(valid_nodes) == 0:
+            # Fallback if no valid nodes
+            return uniform_tiles(image, tile_size=base_tile, stride=base_tile//2)
+        
+        for node_id in valid_nodes:
+            try:
+                node_data = graph.get_node_features(node_id)
+                complexity = node_data.get('complexity', 0.5)
+                
+                # Adaptive sizing: high complexity → smaller tiles
+                tile_size = int(base_tile / (1.0 + complexity * 3.0))
+                tile_size = max(min_tile, min(tile_size, max_tile))
+                
+                # Get region centroid
+                mask = graph.get_node_mask(node_id)
+                coords = np.argwhere(mask)
+                
+                if len(coords) == 0:
+                    continue
+                
+                cy, cx = coords.mean(axis=0).astype(int)
+                
+                # Extract patch centered at region
+                x1 = max(0, cx - tile_size // 2)
+                y1 = max(0, cy - tile_size // 2)
+                x2 = min(w, x1 + tile_size)
+                y2 = min(h, y1 + tile_size)
+                
+                # Ensure valid patch
+                if x2 - x1 < 32 or y2 - y1 < 32:
+                    continue
+                
+                patch = image[y1:y2, x1:x2]
+                
+                tiles.append({
+                    'patch': patch,
+                    'coords': (x1, y1, x2, y2),
+                    'node_id': node_id,
+                    'size': tile_size,
+                    'complexity': complexity,
+                })
+            except Exception as e:
+                continue
+        
+        # Fallback if no tiles were generated
+        if len(tiles) == 0:
+            return uniform_tiles(image, tile_size=base_tile, stride=base_tile//2)
+        
+        return tiles
     
-    for node_id in valid_nodes:
-        node_data = graph.get_node_features(node_id)
-        complexity = node_data['complexity']
-        
-        # Adaptive sizing: high complexity → smaller tiles
-        tile_size = int(base_tile / (1.0 + complexity * 3.0))
-        tile_size = max(min_tile, min(tile_size, max_tile))
-        
-        # Get region centroid
-        mask = graph.get_node_mask(node_id)
-        coords = np.argwhere(mask)
-        
-        if len(coords) == 0:
-            continue
-        
-        cy, cx = coords.mean(axis=0).astype(int)
-        
-        # Extract patch centered at region
-        x1 = max(0, cx - tile_size // 2)
-        y1 = max(0, cy - tile_size // 2)
-        x2 = min(w, x1 + tile_size)
-        y2 = min(h, y1 + tile_size)
-        
-        # Ensure valid patch
-        if x2 - x1 < 32 or y2 - y1 < 32:
-            continue
-        
-        patch = image[y1:y2, x1:x2]
-        
-        tiles.append({
-            'patch': patch,
-            'coords': (x1, y1, x2, y2),
-            'node_id': node_id,
-            'size': tile_size,
-            'complexity': complexity,
-        })
-    
-    return tiles
+    except Exception as e:
+        # Fallback to uniform tiling
+        return uniform_tiles(image, tile_size=base_tile, stride=base_tile//2)
 
 
 def uniform_tiles(image, tile_size=256, stride=None):

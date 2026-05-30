@@ -1,0 +1,27 @@
+{
+  "method": "adaptive",
+  "dataset": "DHMC_wsi_03",
+  "task": "Oncocytoma(0)_vs_Clearcell(1)",
+  "epochs": 1,
+  "split_mode": "stratified",
+  "n_train": 1,
+  "n_val": 1,
+  "final_train_loss": 1.0548681020736694,
+  "final_train_slide_acc": 0.0,
+  "final_val_slide_acc": 1.0,
+  "best_val_slide_acc": 1.0,
+  "final_val_auc": 0.0,
+  "best_val_auc": 0.0,
+  "avg_patches_per_slide": 5.0,
+  "training_time_seconds": 23,
+  "device": "cpu",
+  "train_slide_accs_per_epoch": [
+    0.0
+  ],
+  "val_slide_accs_per_epoch": [
+    1.0
+  ],
+  "val_aucs_per_epoch": [
+    0.0
+  ]
+}
